@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Booking Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animated-bg {
+      background: linear-gradient(-45deg, #1e3a8a, #2563eb, #38bdf8, #a5f3fc);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body class="animated-bg text-gray-900 min-h-screen relative overflow-hidden">
+
+  <!-- 🎉 Floating Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+      <h1 class="text-3xl font-extrabold text-blue-600 tracking-wide">✈️ TravelNow</h1>
+    </div>
+  </header>
+
+  <!-- Popular Destinations -->
+  <section class="max-w-7xl mx-auto mt-10 px-4 relative z-10">
+    <h2 class="text-4xl font-bold text-center text-blue-800 mb-8">Popular Destinations</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="C:\Users\LENOVO\OneDrive\Desktop\Eiffel-Tower-at-Sunrise.jpg" alt="Paris" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Paris, France</h3>
+          <p class="text-sm text-gray-600">The city of love and lights.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="C:\Users\LENOVO\OneDrive\Desktop\1.-Burj-Khalifa-Dubai.jpg" alt="Dubai" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Dubai, UAE</h3>
+          <p class="text-sm text-gray-600">The luxury capital of the world.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="C:\Users\LENOVO\OneDrive\Desktop\Seigantoji-Pagoda-and-Nachi-Falls-in-Nacho-Japan.jpg" alt="Tokyo" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">Tokyo, Japan</h3>
+          <p class="text-sm text-gray-600">City of the rising sun and tech.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
+        <img src="C:\Users\LENOVO\OneDrive\Desktop\new-york-city-statue-of-liberty.jpg" alt="New York" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <h3 class="text-lg font-semibold">New York, USA</h3>
+          <p class="text-sm text-gray-600">The city that never sleeps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+   <!-- Booking Form -->
+  <main class="max-w-4xl mx-auto my-12 bg-white p-10 rounded-2xl shadow-xl fade-in relative z-10">
+    <h2 class="text-4xl font-bold mb-8 text-center text-blue-700">Plan Your Dream Trip</h2>
+
+    <form action="#" method="POST" onsubmit="handleSubmit(event)" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Full Name</label>
+          <input type="text" name="name" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" placeholder="John Doe">
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Email</label>
+          <input type="email" name="email" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" placeholder="you@example.com">
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Phone Number</label>
+          <input type="tel" name="phone" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" placeholder="+91 1234567890">
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Destination</label>
+          <select name="destination" required onchange="updateDestinationDetails()" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400">
+            <option value="">-- Select Destination --</option>
+            <option>Paris, France</option>
+            <option>Dubai, UAE</option>
+            <option>Tokyo, Japan</option>
+            <option>New York, USA</option>
+            <option>Rome, Italy</option>
+            <option>London, UK</option>
+            <option>Cape Town, South Africa</option>
+            <option>Sydney, Australia</option>
+            <option>Rio de Janeiro, Brazil</option>
+            <option>Bangkok, Thailand</option>
+            <option>Other</option>
+          </select>
+          <div id="destination-details" class="mt-4 p-4 bg-blue-50 rounded-lg hidden">
+            <p id="destination-description" class="text-gray-700 mb-2"></p>
+            <ul id="hotel-list" class="list-disc list-inside text-blue-800 font-medium"></ul>
+          </div>
+        </div>
+
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Travel Date</label>
+          <input type="date" name="date" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400">
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Number of Guests</label>
+          <input type="number" name="guests" required min="1" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" value="1">
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Travel Package</label>
+          <select name="package" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400">
+            <option value="">-- Select Package --</option>
+            <option value="standard">Standard - ₹5000</option>
+            <option value="deluxe">Deluxe - ₹9000</option>
+            <option value="luxury">Luxury - ₹15000</option>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold text-gray-700">Payment Method</label>
+          <select name="payment" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400">
+            <option value="">-- Choose Payment Method --</option>
+            <option>Credit Card</option>
+            <option>Debit Card</option>
+            <option>UPI</option>
+            <option>Net Banking</option>
+            <option>Cash on Arrival</option>
+          </select>
+        </div>
+		<div id="payment-fields" class="col-span-2 hidden">
+  <div class="mt-4">
+    <label class="block mb-2 font-semibold text-gray-700">Account Number</label>
+    <input type="text" name="account" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" placeholder="1234 5678 9012">
+  </div>
+  <div class="mt-4">
+    <label class="block mb-2 font-semibold text-gray-700">PIN</label>
+    <input type="password" name="pin" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400" placeholder="****">
+  </div>
+  <div class="mt-4 text-green-700 font-medium">✅ Transaction Complete</div>
+</div>
+
+      </div>
+      <div class="text-center">
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-medium px-8 py-3 rounded-full shadow-md transition duration-300">
+          ✅ Confirm Booking
+        </button>
+      </div>
+    </form>
+
+    <div id="confirmation" class="hidden mt-10 text-center bg-green-100 border border-green-300 text-green-800 p-6 rounded-lg shadow-md">
+      <h3 class="text-2xl font-semibold mb-2">Booking Confirmed!</h3>
+      <p>Your trip has been successfully booked. A confirmation email and ticket will be provided.</p>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    const destinationInfo = {
+      "Paris, France": {
+        description: "Explore the romantic streets of Paris, enjoy French cuisine, and visit iconic landmarks like the Eiffel Tower.",
+        hotels: ["Hotel Le Meurice", "Hôtel Ritz Paris", "Pullman Paris Tour Eiffel"]
+      },
+      "Dubai, UAE": {
+        description: "Dubai is known for its luxury shopping, ultramodern architecture, and lively nightlife.",
+        hotels: ["Atlantis The Palm", "Burj Al Arab", "JW Marriott Marquis"]
+      },
+      "Tokyo, Japan": {
+        description: "Experience the vibrant culture of Tokyo, from high-tech innovation to traditional temples and sushi delights.",
+        hotels: ["Park Hyatt Tokyo", "Hotel New Otani", "Shinjuku Granbell Hotel"]
+      },
+      "New York, USA": {
+        description: "Discover the Big Apple's iconic skyline, Broadway shows, and diverse neighborhoods.",
+        hotels: ["The Plaza", "Marriott Marquis", "Hilton Times Square"]
+      },
+      "Rome, Italy": {
+        description: "Walk through ancient history in Rome, from the Colosseum to Vatican City.",
+        hotels: ["Hotel Eden", "Rome Cavalieri", "NH Collection Roma"]
+      },
+      "London, UK": {
+        description: "Explore historic landmarks, royal palaces, and world-class museums in London.",
+        hotels: ["The Savoy", "The Ritz London", "Park Plaza Westminster Bridge"]
+      },
+      "Cape Town, South Africa": {
+        description: "Cape Town offers a stunning mix of mountains, beaches, and vibrant cultural life.",
+        hotels: ["One&Only Cape Town", "The Table Bay", "Cape Grace Hotel"]
+      },
+      "Sydney, Australia": {
+        description: "Visit the Sydney Opera House, relax on Bondi Beach, and enjoy Aussie hospitality.",
+        hotels: ["Shangri-La Hotel", "Hyatt Regency Sydney", "The Fullerton Hotel"]
+      },
+      "Rio de Janeiro, Brazil": {
+        description: "Enjoy Rio's beaches, samba music, and views from Christ the Redeemer.",
+        hotels: ["Belmond Copacabana Palace", "Hilton Rio de Janeiro", "Hotel Fasano"]
+      },
+      "Bangkok, Thailand": {
+        description: "Bangkok boasts ornate shrines, vibrant street life, and delicious Thai cuisine.",
+        hotels: ["Banyan Tree Bangkok", "Mandarin Oriental", "The Siam Hotel"]
+      },
+      "Other": {
+        description: "Please enter your desired destination in the comment box at checkout.",
+        hotels: []
+      }
+    };
+
+    function updateDestinationDetails() {
+      const destination = document.querySelector('[name="destination"]').value;
+      const detailsDiv = document.getElementById("destination-details");
+      const descPara = document.getElementById("destination-description");
+      const hotelList = document.getElementById("hotel-list");
+
+      if (destination && destinationInfo[destination]) {
+        descPara.textContent = destinationInfo[destination].description;
+        hotelList.innerHTML = destinationInfo[destination].hotels
+          .map(hotel => `<li>${hotel}</li>`)
+          .join("");
+        detailsDiv.classList.remove("hidden");
+      } else {
+        detailsDiv.classList.add("hidden");
+      }
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const guests = parseInt(document.querySelector('[name="guests"]').value);
+      const packageType = document.querySelector('[name="package"]').value;
+
+      const pricing = {
+        standard: 5000,
+        deluxe: 9000,
+        luxury: 15000
+      };
+
+      const perPersonCost = pricing[packageType] || 0;
+      const total = guests * perPersonCost;
+
+      const confirmation = document.getElementById("confirmation");
+      confirmation.classList.remove("hidden");
+      confirmation.innerHTML = `
+        <h3 class="text-2xl font-semibold mb-2">Booking Confirmed!</h3>
+        <p>Your trip has been successfully booked.</p>
+        <p class="mt-2">Package: <strong>${packageType.charAt(0).toUpperCase() + packageType.slice(1)}</strong></p>
+        <p>Total Guests: <strong>${guests}</strong></p>
+        <p>Total Amount: ₹<strong>${total.toLocaleString()}</strong></p>
+        <p class="mt-2">A confirmation email and ticket will be provided.</p>
+      `;
+      window.scrollTo({ top: confirmation.offsetTop, behavior: 'smooth' });
+    }
+  </script>
+
+
+  <!-- 🚀 ParticlesJS Configuration -->
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 60 },
+        size: { value: 3 },
+        color: { value: "#ffffff" },
+        opacity: { value: 0.3 },
+        line_linked: {
+          enable: true,
+          distance: 120,
+          color: "#ffffff",
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" }
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.4 } }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
